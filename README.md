@@ -85,8 +85,8 @@
 
 | Secret 名称 | 填什么 |
 |-------------|--------|
-| `CLOUDFLARE_API_TOKEN` | 你刚才复制的 Cloudflare API Token |
-| `CLOUDFLARE_ACCOUNT_ID` | 你的 Cloudflare Account ID |
+| `CF_API_TOKEN` | 你刚才复制的 Cloudflare API Token |
+| `CF_ACCOUNT_ID` | 你的 Cloudflare Account ID |
 | `D1_DATABASE_NAME` | D1 数据库名字，比如 `cunmail` |
 | `D1_DATABASE_ID` | D1 数据库 ID |
 | `EMAIL_DOMAIN` | 你的邮箱域名，比如 `example.com` |

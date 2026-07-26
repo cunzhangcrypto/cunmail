@@ -7,8 +7,8 @@ build/
 .next/
 .npmrc
 pnpm-lock.yaml
-wrangler.toml
 .DS_Store
 .vscode/
 .idea/
 *.log
+.wrangler/

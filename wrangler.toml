@@ -1,0 +1,48 @@
+name = "cunmail"
+main = "worker/src/index.ts"
+
+# 打包配置
+minify = true
+compatibility_flags = [ "nodejs_compat" ]
+compatibility_date = "2025-03-27"
+keep_vars = true
+
+# 启用 D1 数据库
+[[d1_databases]]
+binding = "DB"
+database_name = "${D1_DATABASE_NAME}"
+database_id = "${D1_DATABASE_ID}"
+migrations_dir = "worker/drizzle"
+
+# 定义环境变量和密钥
+[vars]
+PASSWORD = "${PASSWORD}"
+COOKIES_SECRET = "${COOKIES_SECRET}"
+EMAIL_DOMAIN = "${EMAIL_DOMAIN}"
+SEND_CHANNEL = "${SEND_CHANNEL}"
+SENDER_EMAIL = "${SENDER_EMAIL}"
+SEND_RATE_LIMIT_PER_MINUTE = "${SEND_RATE_LIMIT_PER_MINUTE}"
+SEND_IP_RATE_LIMIT_PER_MINUTE = "${SEND_IP_RATE_LIMIT_PER_MINUTE}"
+TURNSTILE_KEY = "${TURNSTILE_KEY}"
+TURNSTILE_SECRET = "${TURNSTILE_SECRET}"
+API_RATE_LIMIT_PER_MINUTE = "${API_RATE_LIMIT_PER_MINUTE}"
+SHOW_AFF = "${SHOW_AFF}"
+ENABLE_OPENAPI = "false"
+MAILBOX_TOKEN_SECRET = "${MAILBOX_TOKEN_SECRET}"
+
+# Cloudflare 原生邮件发送绑定
+[[send_email]]
+name = "SEND_EMAIL"
+
+# 配置邮件处理
+[triggers]
+crons = ["0 * * * *"]
+
+# 构建配置
+[build]
+command = "pnpm run build"
+
+# 静态资源配置
+[assets]
+binding = "ASSETS"
+directory = "frontend/build/client"
