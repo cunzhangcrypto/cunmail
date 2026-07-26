@@ -1,0 +1,14 @@
+node_modules/
+.env
+.env.local
+.env.*.local
+dist/
+build/
+.next/
+.npmrc
+pnpm-lock.yaml
+wrangler.toml
+.DS_Store
+.vscode/
+.idea/
+*.log
