@@ -140,7 +140,7 @@ test("provider payloads use the configured sender and authenticated reply-to", (
     outgoingEmail,
     "verified@example.com",
   );
-  assert.equal(resendPayload.from, "Alice via Vmail <verified@example.com>");
+  assert.equal(resendPayload.from, "Alice via CunMail <verified@example.com>");
   assert.equal(resendPayload.reply_to, "alice@example.com");
   assert.equal(
     resendPayload.text,
