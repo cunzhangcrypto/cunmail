@@ -91,16 +91,16 @@ export default function SenderModal({
   };
 
   return (
-    <Modal showModal={showSenderModal} setShowModal={setShowSenderModal}>
-      <div className="w-full overflow-hidden bg-white/95 backdrop-blur-xl shadow-xl p-4 md:max-w-3xl md:rounded-2xl md:border md:border-gray-200">
+    <Modal showModal={showSenderModal} setShowModal={setShowSenderModal} theme="dark">
+      <div className="w-full overflow-hidden bg-slate-900/95 backdrop-blur-xl shadow-xl p-4 md:max-w-3xl md:rounded-2xl md:border md:border-slate-700/50">
         <Close
-          className="absolute top-4 right-4 h-6 w-6 text-gray-500 hover:text-gray-700 cursor-pointer"
+          className="absolute top-4 right-4 h-6 w-6 text-slate-400 hover:text-white cursor-pointer"
           onClick={() => setShowSenderModal(false)}
         />
 
-        <div className="flex flex-col items-center justify-center space-y-3 border-b border-gray-200 px-4 py-5 text-center md:px-16">
-          <h3 className="font-display text-2xl font-bold">Vmail Sender</h3>
-          <p className="text-gray-500">{t("Forward only, no storage")}</p>
+        <div className="flex flex-col items-center justify-center space-y-3 border-b border-slate-700/50 px-4 py-5 text-center md:px-16">
+          <h3 className="font-display text-2xl font-bold text-white">Vmail Sender</h3>
+          <p className="text-slate-400">{t("Forward only, no storage")}</p>
         </div>
         <form
           onSubmit={handleSubmit}
@@ -115,13 +115,13 @@ export default function SenderModal({
               required
               readOnly
               title={`${t("Reply-To:")} ${senderEmail}`}
-              className="rounded-md border border-slate-200 px-3 py-2 shadow-inner w-full bg-gray-100 cursor-not-allowed"
+              className="rounded-md border border-slate-700/50 px-3 py-2 shadow-inner w-full bg-slate-800/50 text-slate-400 cursor-not-allowed"
             />
             <input
               type="text"
               name="senderName"
               placeholder={t("Sending name")}
-              className="rounded-md border border-slate-200 px-3 py-2 shadow-inner w-full"
+              className="rounded-md border border-slate-700/50 px-3 py-2 shadow-inner w-full bg-slate-800/50 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 transition-all"
             />
           </div>
 
@@ -131,24 +131,24 @@ export default function SenderModal({
               name="receiverEmail"
               placeholder={t("Recipient email *")}
               required
-              className="rounded-md border border-slate-200 px-3 py-2 shadow-inner w-full"
+              className="rounded-md border border-slate-700/50 px-3 py-2 shadow-inner w-full bg-slate-800/50 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 transition-all"
             />
             <input
               type="text"
               name="subject"
               placeholder={t("Email subject *")}
               required
-              className="rounded-md border border-slate-200 px-3 py-2 shadow-inner w-full"
+              className="rounded-md border border-slate-700/50 px-3 py-2 shadow-inner w-full bg-slate-800/50 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 transition-all"
             />
           </div>
 
           <div className="w-full">
             <select
               name="type"
-              className="rounded-md border border-slate-200 px-3 py-2 shadow-inner w-full"
+              className="rounded-md border border-slate-700/50 px-3 py-2 shadow-inner w-full bg-slate-800/50 text-white focus:outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 transition-all"
             >
-              <option value="text/plain">Plain</option>
-              <option value="text/html">HTML</option>
+              <option value="text/plain" className="bg-slate-900">Plain</option>
+              <option value="text/html" className="bg-slate-900">HTML</option>
             </select>
           </div>
           <div className="w-full">
@@ -156,7 +156,7 @@ export default function SenderModal({
               name="content"
               placeholder={t("Email content *")}
               required
-              className="min-h-24 p-2 border border-slate-200 shadow-inner rounded-md w-full"
+              className="min-h-24 p-2 border border-slate-700/50 shadow-inner rounded-md w-full bg-slate-800/50 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 transition-all"
             ></textarea>
           </div>
 
@@ -164,17 +164,17 @@ export default function SenderModal({
             <button
               type="submit"
               disabled={isSending}
-              className="py-2.5 text-white rounded-md w-full bg-cyan-600 hover:opacity-90 disabled:cursor-not-allowed disabled:bg-zinc-500"
+              className="py-2.5 text-white rounded-md w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:shadow-lg hover:shadow-cyan-500/30 disabled:cursor-not-allowed disabled:opacity-50 transition-all"
             >
               {isSending ? t("Sending...") : t("Send")}
             </button>
           )}
           {!hasSender && (
-            <p className="py-2.5 text-center text-sm text-gray-400 rounded-md w-full border border-dashed border-gray-300">
+            <p className="py-2.5 text-center text-sm text-slate-500 rounded-md w-full border border-dashed border-slate-700/50">
               {t("No sending service configured")}
             </p>
           )}
-          <p className="text-sm text-gray-500 mt-4">
+          <p className="text-sm text-slate-500 mt-4">
             🚫
             {t(
               "Please do not send illegal content such as politics, pornography, etc",

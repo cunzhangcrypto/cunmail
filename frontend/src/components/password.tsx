@@ -40,20 +40,20 @@ export default function PasswordModal({
   };
 
   return (
-    <Modal showModal={showPasswordModal} setShowModal={setShowPasswordModal}>
-      <div className="w-full overflow-hidden bg-white/95 backdrop-blur-xl shadow-xl p-4 md:max-w-3xl md:rounded-2xl md:border md:border-gray-200">
+    <Modal showModal={showPasswordModal} setShowModal={setShowPasswordModal} theme="dark">
+      <div className="w-full overflow-hidden bg-slate-900/95 backdrop-blur-xl shadow-xl p-4 md:max-w-3xl md:rounded-2xl md:border md:border-slate-700/50">
         {/* 修复：添加 onPointerDown 事件来阻止拖动事件与点击事件的冲突 */}
         <Close
-          className="absolute top-4 right-4 h-6 w-6 text-gray-500 hover:text-gray-700 cursor-pointer"
+          className="absolute top-4 right-4 h-6 w-6 text-slate-400 hover:text-white cursor-pointer"
           onClick={() => setShowPasswordModal(false)}
           onPointerDown={(e) => e.stopPropagation()}
         />
 
-        <div className="flex flex-col items-center justify-center space-y-3 border-b border-gray-200 px-4 py-5 text-center md:px-16">
-          <h3 className="font-display text-2xl font-bold">
+        <div className="flex flex-col items-center justify-center space-y-3 border-b border-slate-700/50 px-4 py-5 text-center md:px-16">
+          <h3 className="font-display text-2xl font-bold text-white">
             {t("Save password")}
           </h3>
-          <p className="text-gray-500">
+          <p className="text-slate-400">
             {t("Save your password and continue using this email in 1 day")}
           </p>
         </div>
@@ -65,15 +65,15 @@ export default function PasswordModal({
             name="password"
             placeholder={t("Enter your password *")}
             required
-            className="rounded-md border border-slate-200 px-3 py-2 shadow-inner w-full"
+            className="rounded-md border border-slate-700/50 px-3 py-2 shadow-inner w-full bg-slate-800/50 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 transition-all"
           />
-          <p className="text-sm">
+          <p className="text-sm text-slate-400">
             {t(
               "How to get a password? Click to create a temporary email and receive at least one email to generate a password"
             )}
             .
           </p>
-          <p className="text-sm text-yellow-600">
+          <p className="text-sm text-amber-400/80">
             {t(
               "Remember your password, otherwise your email will expire and cannot be retrieved"
             )}
@@ -82,7 +82,7 @@ export default function PasswordModal({
           <button
             type="submit"
             disabled={isLoggingIn}
-            className="py-2.5 text-white rounded-md w-full bg-cyan-600 hover:opacity-90 disabled:cursor-not-allowed disabled:bg-zinc-500">
+            className="py-2.5 text-white rounded-md w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:shadow-lg hover:shadow-cyan-500/30 disabled:cursor-not-allowed disabled:opacity-50 transition-all">
             {isLoggingIn
               ? t("Submitting...")
               : t("Login")}
