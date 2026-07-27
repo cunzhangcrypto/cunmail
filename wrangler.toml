@@ -30,9 +30,7 @@ SHOW_AFF = "${SHOW_AFF}"
 ENABLE_OPENAPI = "false"
 MAILBOX_TOKEN_SECRET = "${MAILBOX_TOKEN_SECRET}"
 
-# Cloudflare 原生邮件发送绑定
-[[send_email]]
-name = "SEND_EMAIL"
+
 
 # 配置邮件处理
 [triggers]

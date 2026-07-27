@@ -36,8 +36,8 @@ function App() {
           openApiEnabled: false,
           cookiesSecret: "dev-secret",
           showAff: false,
-          enabledSenders: ["cloudflare"],
-          sendChannel: "cloudflare",
+          enabledSenders: ["resend"],
+          sendChannel: "resend",
           senderEmail: "no-reply@cunmail.dev",
         });
       });
