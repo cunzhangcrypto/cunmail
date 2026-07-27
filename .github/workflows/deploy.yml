@@ -168,11 +168,11 @@ jobs:
           echo "SEND_CHANNEL is set, configuring secrets..."
           if [ -n "${RESEND_API_KEY}" ]; then
             echo "Setting RESEND_API_KEY..."
-            printf '%s' "${RESEND_API_KEY}" | npx wrangler secret put RESEND_API_KEY --force
+            printf '%s' "${RESEND_API_KEY}" | npx wrangler secret put RESEND_API_KEY
           fi
           if [ -n "${MAILCHANNELS_API_KEY}" ]; then
             echo "Setting MAILCHANNELS_API_KEY..."
-            printf '%s' "${MAILCHANNELS_API_KEY}" | npx wrangler secret put MAILCHANNELS_API_KEY --force
+            printf '%s' "${MAILCHANNELS_API_KEY}" | npx wrangler secret put MAILCHANNELS_API_KEY
           fi
           echo "Secrets configured successfully"
         env:
