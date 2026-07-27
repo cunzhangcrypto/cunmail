@@ -121,7 +121,7 @@ export function MailList({
             key={email.id}
             className={clsx(
               "flex items-start gap-3 p-3 rounded-lg cursor-pointer transition-all duration-200",
-              selectedEmail?.id === email.id
+              (selectedEmail as Email | null)?.id === email.id
                 ? "bg-cyan-500/10 border border-cyan-500/30"
                 : "hover:bg-slate-800/50 border border-transparent hover:border-slate-700/50",
             )}
