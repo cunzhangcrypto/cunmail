@@ -150,13 +150,34 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
 
-      # 部署到 Cloudflare Workers（同时设置 Worker 密钥）
+      # 部署到 Cloudflare Workers
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
           wranglerVersion: "4.111.0"
-          secrets: |
-            RESEND_API_KEY
-            MAILCHANNELS_API_KEY
+
+      # 设置 Worker 密钥（分开执行，方便排查错误）
+      - name: Configure sender secrets
+        run: |
+          if [ -z "${SEND_CHANNEL}" ]; then
+            echo "SEND_CHANNEL is empty, skipping secrets"
+            exit 0
+          fi
+          echo "SEND_CHANNEL is set, configuring secrets..."
+          if [ -n "${RESEND_API_KEY}" ]; then
+            echo "Setting RESEND_API_KEY..."
+            printf '%s' "${RESEND_API_KEY}" | npx wrangler secret put RESEND_API_KEY --force
+          fi
+          if [ -n "${MAILCHANNELS_API_KEY}" ]; then
+            echo "Setting MAILCHANNELS_API_KEY..."
+            printf '%s' "${MAILCHANNELS_API_KEY}" | npx wrangler secret put MAILCHANNELS_API_KEY --force
+          fi
+          echo "Secrets configured successfully"
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          SEND_CHANNEL: ${{ secrets.SEND_CHANNEL }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          MAILCHANNELS_API_KEY: ${{ secrets.MAILCHANNELS_API_KEY }}
