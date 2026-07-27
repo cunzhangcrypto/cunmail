@@ -1,11 +1,8 @@
 # 工作流名称
 name: Deploy to Cloudflare
 
-# 触发条件
+# 触发条件：仅手动触发
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:
