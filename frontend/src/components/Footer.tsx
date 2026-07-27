@@ -30,7 +30,7 @@ export function Footer() {
               🌐 村长博客
             </a>
             <a
-              href="https://github.com/oiov/vmail"
+              href="https://github.com/cunzhangcrypto/cunmail"
               target="_blank"
               rel="noopener noreferrer"
               className="text-slate-400 hover:text-cyan-400 transition-colors">

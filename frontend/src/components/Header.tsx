@@ -117,7 +117,7 @@ export function Header() {
               </div>
 
               <a
-                href="https://github.com/oiov/vmail"
+                href="https://github.com/cunzhangcrypto/cunmail"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm text-slate-300 bg-slate-800/50 border border-slate-700/50 hover:border-cyan-500/30 hover:text-cyan-400 transition-all">

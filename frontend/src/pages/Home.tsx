@@ -377,19 +377,22 @@ export function Home() {
 
   const prevEmailsRef = useRef<string[]>([]);
   useEffect(() => {
-    if (emails.length > 0 && notificationEnabled) {
-      const currentIds = emails.map(e => e.id);
-      const prevIds = prevEmailsRef.current;
-      
-      if (prevIds.length > 0) {
-        const newEmails = emails.filter(e => !prevIds.includes(e.id));
-        if (newEmails.length > 0) {
-          sendNotification(newEmails[0]);
-        }
-      }
-      
-      prevEmailsRef.current = currentIds;
+    if (!notificationEnabled) {
+      prevEmailsRef.current = emails.map(e => e.id);
+      return;
     }
+
+    const currentIds = emails.map(e => e.id);
+    const prevIds = prevEmailsRef.current;
+    
+    if (prevIds.length > 0) {
+      const newEmails = emails.filter(e => !prevIds.includes(e.id));
+      if (newEmails.length > 0) {
+        sendNotification(newEmails[0]);
+      }
+    }
+    
+    prevEmailsRef.current = currentIds;
   }, [emails, notificationEnabled, sendNotification]);
 
   useEffect(() => {
@@ -745,7 +748,7 @@ export function Home() {
             <p className="text-xs text-slate-400 mb-3">
               专注分享AI工具、互联网效率工具、开源项目和数字生产力方法。
             </p>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-4 gap-2">
               <a
                 href="https://www.cunzhangblog.com"
                 target="_blank"
@@ -767,7 +770,7 @@ export function Home() {
                 <span className="text-[10px] text-slate-400 group-hover:text-pink-400 transition-colors">B站</span>
               </a>
               <a
-                href="https://youtube.com/@cunzhangcrypto"
+                href="https://www.youtube.com/@cunzhanglab"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex flex-col items-center gap-1 p-2 rounded-lg bg-slate-800/50 hover:bg-slate-700/50 border border-slate-700/50 hover:border-red-500/30 transition-all group">
@@ -775,6 +778,16 @@ export function Home() {
                   <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                 </svg>
                 <span className="text-[10px] text-slate-400 group-hover:text-red-400 transition-colors">油管</span>
+              </a>
+              <a
+                href="https://t.me/cunzhanglab"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col items-center gap-1 p-2 rounded-lg bg-slate-800/50 hover:bg-slate-700/50 border border-slate-700/50 hover:border-sky-500/30 transition-all group">
+                <svg className="w-4 h-4 text-slate-400 group-hover:text-sky-400 transition-colors" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.127.087.775.163 1.394.226 1.864.468 3.877.468 3.877.057.377.088.566.089.742a1.17 1.17 0 0 1-.033.297c-.037.14-.14.26-.256.308-.199.082-.45.028-.627-.028-.206-.065-1.169-.457-1.67-.61a.355.355 0 0 0-.137-.014c-.076.009-.152.058-.243.14-.542.49-.746.74-1.01.994a.55.55 0 0 1-.184.127c-.153.064-.327.027-.434-.02-.275-.12-.434-.454-.523-.717-.1-.294-.365-1.184-.535-1.784-.057-.2-.103-.364-.104-.396-.004-.055.01-.089.037-.117.033-.033.079-.043.128-.043l.01-.002c.127-.01.249-.003.373.037.584.187 2.033.695 2.184.74.113.033.225.058.319.013a.392.392 0 0 0 .166-.13c.088-.112.08-.263.066-.357-.019-.117-.444-1.76-.64-2.46-.096-.344-.178-.627-.178-.66 0-.004-.003-.01-.003-.018-.003-.067.024-.12.092-.168.145-.102.326-.128.488-.138.226-.014.399-.01.563-.006z"/>
+                </svg>
+                <span className="text-[10px] text-slate-400 group-hover:text-sky-400 transition-colors">电报</span>
               </a>
             </div>
           </div>
