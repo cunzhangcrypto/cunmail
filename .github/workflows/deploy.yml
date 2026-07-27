@@ -88,6 +88,7 @@ jobs:
               *) echo "Unsupported SEND_CHANNEL: ${SEND_CHANNEL}"; exit 1 ;;
             esac
             [ -n "${SENDER_EMAIL}" ] || { echo "SENDER_EMAIL is required"; exit 1; }
+            [ -n "${MAILBOX_TOKEN_SECRET}" ] || { echo "MAILBOX_TOKEN_SECRET is required"; exit 1; }
             sed -i "s#\${SEND_CHANNEL}#${SEND_CHANNEL}#g" wrangler.toml
             sed -i "s#\${SENDER_EMAIL}#${SENDER_EMAIL}#g" wrangler.toml
           else
