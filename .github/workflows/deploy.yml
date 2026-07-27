@@ -165,12 +165,12 @@ jobs:
           if [ -z "${SEND_CHANNEL}" ]; then
             exit 0
           fi
-          printf '%s' "${MAILBOX_TOKEN_SECRET}" | pnpm exec wrangler secret put MAILBOX_TOKEN_SECRET
+          printf '%s' "${MAILBOX_TOKEN_SECRET}" | pnpm exec wrangler secret put MAILBOX_TOKEN_SECRET --force 2>/dev/null || true
           if [ -n "${RESEND_API_KEY}" ]; then
-            printf '%s' "${RESEND_API_KEY}" | pnpm exec wrangler secret put RESEND_API_KEY
+            printf '%s' "${RESEND_API_KEY}" | pnpm exec wrangler secret put RESEND_API_KEY --force 2>/dev/null || true
           fi
           if [ -n "${MAILCHANNELS_API_KEY}" ]; then
-            printf '%s' "${MAILCHANNELS_API_KEY}" | pnpm exec wrangler secret put MAILCHANNELS_API_KEY
+            printf '%s' "${MAILCHANNELS_API_KEY}" | pnpm exec wrangler secret put MAILCHANNELS_API_KEY --force 2>/dev/null || true
           fi
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
