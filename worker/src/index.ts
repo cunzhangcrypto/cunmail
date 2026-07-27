@@ -515,6 +515,29 @@ app.get('/config', (c) => {
   });
 });
 
+// 发件功能调试接口（只返回各配置是否存在，不暴露实际值）
+app.get('/api/send-debug', (c) => {
+  const hasMailboxTokenSecret = Boolean(c.env.MAILBOX_TOKEN_SECRET);
+  const hasSenderEmail = Boolean(c.env.SENDER_EMAIL);
+  const hasSendChannel = Boolean(c.env.SEND_CHANNEL);
+  const hasResendApiKey = Boolean(c.env.RESEND_API_KEY);
+  const hasMailchannelsApiKey = Boolean(c.env.MAILCHANNELS_API_KEY);
+  const hasSendEmail = Boolean(c.env.SEND_EMAIL);
+  const sendChannel = getConfiguredSendChannel(c.env);
+  const sendChannelValue = c.env.SEND_CHANNEL || '(empty)';
+
+  return c.json({
+    hasMailboxTokenSecret,
+    hasSenderEmail,
+    hasSendChannel,
+    sendChannelValue,
+    hasResendApiKey,
+    hasMailchannelsApiKey,
+    hasSendEmail,
+    getConfiguredSendChannelResult: sendChannel || 'null',
+  });
+});
+
 // 站点统计数据接口（公开）
 api.get('/stats', async (c) => {
   const cache = caches.default;
