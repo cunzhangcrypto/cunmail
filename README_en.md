@@ -70,7 +70,7 @@ This project is based on Cloudflare Workers and Cloudflare D1. All you need is a
 
 ### Automatic Deployment (Recommended)
 
-This project includes a pre-configured GitHub Action workflow to help you automatically deploy the Vmail application to Cloudflare.
+This project includes a pre-configured GitHub Action workflow to help you automatically deploy the CunMail application to Cloudflare.
 
 For detailed steps, please refer to the [GitHub Action Auto-Deployment Tutorial](/docs/github-action-tutorial.md).
 

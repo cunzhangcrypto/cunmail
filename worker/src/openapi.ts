@@ -14,7 +14,7 @@ export function createOpenApiDisabledResponse(): Response {
       error: {
         code: "OPENAPI_DISABLED",
         message:
-          "OpenAPI access is disabled by the site administrator. Please self-host Vmail if you need API access.",
+          "OpenAPI access is disabled by the site administrator. Please self-host CunMail if you need API access.",
       },
     }),
     {

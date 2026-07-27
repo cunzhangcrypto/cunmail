@@ -99,7 +99,7 @@ export default function SenderModal({
         />
 
         <div className="flex flex-col items-center justify-center space-y-3 border-b border-slate-700/50 px-4 py-5 text-center md:px-16">
-          <h3 className="font-display text-2xl font-bold text-white">Vmail Sender</h3>
+          <h3 className="font-display text-2xl font-bold text-white">CunMail 发件</h3>
           <p className="text-slate-400">{t("Forward only, no storage")}</p>
         </div>
         <form
