@@ -6,7 +6,6 @@ dist/
 build/
 .next/
 .npmrc
-pnpm-lock.yaml
 .DS_Store
 .vscode/
 .idea/
